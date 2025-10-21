@@ -17,21 +17,25 @@
   top: 0;
   z-index: 100;
 }
+
 .navbar .logo {
   font-size: 24px;
   font-weight: bold;
   color: #ff4d4d;
 }
+
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 20px;
 }
+
 .navbar ul li a {
   color: white;
   text-decoration: none;
   transition: 0.3s;
 }
+
 .navbar ul li a:hover {
   color: #ff4d4d;
 }
@@ -46,16 +50,20 @@
   color: white;
   padding: 0 20px;
 }
+
 .hero-text h1 {
   font-size: 50px;
 }
+
 .hero-text h1 span {
   color: #ff4d4d;
 }
+
 .hero-text p {
   margin: 20px 0;
   font-size: 18px;
 }
+
 .btn {
   background: #ff4d4d;
   color: white;
@@ -64,6 +72,7 @@
   border-radius: 30px;
   transition: 0.3s;
 }
+
 .btn:hover {
   background: #e63939;
 }
@@ -73,16 +82,19 @@
   background: #f4f4f4;
   text-align: center;
 }
+
 .servicii h2 {
   font-size: 32px;
   margin-bottom: 40px;
 }
+
 .servicii-box {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .card {
   background: white;
   padding: 20px;
@@ -91,6 +103,7 @@
   width: 300px;
   transition: 0.3s;
 }
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -99,61 +112,55 @@
   padding: 80px 50px;
   text-align: center;
 }
+
 .echipa h2 {
   margin-bottom: 40px;
   font-size: 32px;
 }
+
 .echipa-box {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
+
 .trainer {
   width: 250px;
 }
+
 .trainer img {
   width: 100%;
   border-radius: 50%;
   margin-bottom: 15px;
   border: 4px solid #ff4d4d;
 }
+
 .trainer h3 {
   font-size: 20px;
   margin-bottom: 5px;
 }
 
-.contact {
+.abonamente {
   padding: 80px 50px;
-  background: #f4f4f4;
+  background: white;
   text-align: center;
-}
-.contact form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.contact input,
-.contact textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-}
-.contact textarea {
-  height: 120px;
-  resize: none;
-}
-.contact button {
-  border: none;
-  cursor: pointer;
 }
 
-footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 20px;
+.abonamente h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
 }
+
+.abonamente-box {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.plan {
+  background: #f4f4f4;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.
