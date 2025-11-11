@@ -199,6 +199,9 @@
   padding: 100px 50px;
   background: #f9f9f9;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .abonamente h2 {
@@ -220,8 +223,11 @@
 .abonamente-box {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 30px;
   flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .plan {
