@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitClub - Gym</title>
+  <title>FitClub - Sala ta de fitness</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041883.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">FitClub</div>
+    <div class="logo"><i class="fa-solid fa-dumbbell"></i> FitClub</div>
     <nav>
       <ul>
         <li><a href="#acasa">Acasă</a></li>
@@ -23,8 +25,9 @@
   <section class="hero" id="acasa">
     <div class="hero-text">
       <h1>Bine ai venit la <span>FitClub</span></h1>
-      <p>Transformă-ți corpul și mintea într-un mediu dedicat sănătății și energiei.</p>
-      <a href="#servicii" class="btn">Începe acum</a>
+      <p>Descoperă un loc unde energia, disciplina și motivația se transformă
+în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!</p>
+      <a href="#abonamente" class="btn">Înscrie-te acum</a>
     </div>
   </section>
 
@@ -32,16 +35,24 @@
     <h2>Serviciile noastre</h2>
     <div class="servicii-box">
       <div class="card">
+        <i class="fa-solid fa-dumbbell fa-2x" style="color:#ff4d4d;margin-bottom:10px;"></i>
         <h3>Antrenamente de forță</h3>
-        <p>Programe personalizate pentru creșterea masei musculare și forței.</p>
+        <p>Programe personalizate pentru dezvoltarea masei musculare și
+îmbunătățirea rezistenței fizice.</p>
       </div>
+
       <div class="card">
+        <i class="fa-solid fa-heart-pulse fa-2x" style="color:#ff4d4d;margin-bottom:10px;"></i>
         <h3>Cardio & Fitness</h3>
-        <p>Echipamente moderne și clase dinamice pentru arderea caloriilor.</p>
+        <p>Clase interactive și aparate moderne pentru a-ți crește energia și
+a arde caloriile eficient.</p>
       </div>
+
       <div class="card">
+        <i class="fa-solid fa-apple-whole fa-2x" style="color:#ff4d4d;margin-bottom:10px;"></i>
         <h3>Nutriție</h3>
-        <p>Planuri alimentare echilibrate pentru rezultate rapide și sănătoase.</p>
+        <p>Planuri alimentare adaptate obiectivelor tale, create de
+specialiști în nutriție sportivă.</p>
       </div>
     </div>
   </section>
@@ -50,18 +61,18 @@
     <h2>Echipa noastră</h2>
     <div class="echipa-box">
       <div class="trainer">
-        <img src="Imagini/Andrei.png" alt="Trainer 1">
-        <h3>Andrei</h3>
-        <p>Instructor fitness</p>
+        <img src="Imagini/Andrei.png" alt="Andrei - instructor fitness">
+        <h3>Andrei Popescu</h3>
+        <p>Instructor Fitness</p>
       </div>
       <div class="trainer">
-        <img src="Imagini/Maria.png" alt="Trainer 2">
-        <h3>Maria</h3>
-        <p>Nutriționist</p>
+        <img src="Imagini/Maria.png" alt="Maria - nutriționist">
+        <h3>Maria Ionescu</h3>
+        <p>Nutriționist certificat</p>
       </div>
       <div class="trainer">
-        <img src="Imagini/Alex.png" alt="Trainer 3">
-        <h3>Alex</h3>
+        <img src="Imagini/Alex.png" alt="Alex - antrenor personal">
+        <h3>Alex Rusu</h3>
         <p>Antrenor personal</p>
       </div>
     </div>
@@ -71,7 +82,7 @@
     <h2>Abonamente & Prețuri</h2>
     <div class="abonamente-box">
       <div class="plan">
-        <h3>Basic</h3>
+        <h3><i class="fa-solid fa-star"></i> Basic</h3>
         <p class="pret">400 MDL / lună</p>
         <ul>
           <li>Acces nelimitat la sală</li>
@@ -81,7 +92,7 @@
         <a href="#contact" class="btn">Alege planul</a>
       </div>
       <div class="plan">
-        <h3>Standard</h3>
+        <h3><i class="fa-solid fa-fire"></i> Standard</h3>
         <p class="pret">600 MDL / lună</p>
         <ul>
           <li>Acces complet la echipamente</li>
@@ -91,12 +102,12 @@
         <a href="#contact" class="btn">Alege planul</a>
       </div>
       <div class="plan">
-        <h3>Premium</h3>
+        <h3><i class="fa-solid fa-crown"></i> Premium</h3>
         <p class="pret">800 MDL / lună</p>
         <ul>
-          <li>Acces total + antrenor personal</li>
+          <li>Antrenor personal inclus</li>
           <li>Plan nutrițional personalizat</li>
-          <li>Ședințe private</li>
+          <li>Ședințe private exclusive</li>
         </ul>
         <a href="#contact" class="btn">Alege planul</a>
       </div>
@@ -105,14 +116,23 @@
 
   <section class="contact" id="contact">
     <h2>Contactează-ne</h2>
+    <p>Ai întrebări sau vrei să te înscrii? Trimite-ne un mesaj și te vom
+contacta cât mai curând!</p>
     <form>
       <input type="text" placeholder="Nume complet" required>
       <input type="email" placeholder="Email" required>
       <textarea placeholder="Mesajul tău" required></textarea>
-      <button type="submit" class="btn">Trimite</button>
+      <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Trimite</button>
     </form>
+    <div style="margin-top: 40px;">
+      <p><i class="fa-solid fa-location-dot"></i> Str. Sportivilor 25, Chișinău</p>
+      <p><i class="fa-solid fa-phone"></i> +373 68 123 456</p>
+      <p><i class="fa-solid fa-envelope"></i> contact@fitclub.md</p>
+    </div>
   </section>
 
-
+  <footer>
+    <p>&copy; 2025 <strong>FitClub</strong>. Toate drepturile rezervate. | Realizat cu ❤️ pentru pasionații de fitness</p>
+  </footer>
 </body>
 </html>
