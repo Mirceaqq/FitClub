@@ -183,7 +183,11 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 300px;
   transition: 0.3s;
+<<<<<<< HEAD
   color: #111;
+=======
+  color: #333;
+>>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
 
 .card:hover {
@@ -292,7 +296,11 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 280px;
   transition: 0.3s;
+<<<<<<< HEAD
   color: #111;
+=======
+  color: #333;
+>>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
 
 .plan:hover {
@@ -368,13 +376,17 @@ footer {
   letter-spacing: 0.5px;
 }
 
+<<<<<<< HEAD
 /* DARK MODE */
+=======
+>>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 body.dark {
   background: #111;
   color: #eee;
 }
 
 body.dark .navbar,
+<<<<<<< HEAD
 body.dark .hero-text p,
 body.dark .trainer h3,
 body.dark .card,
@@ -386,17 +398,23 @@ body.dark .contact h2,
 body.dark li,
 body.dark input,
 body.dark textarea {
+=======
+body.dark .contact,
+body.dark footer {
+>>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
   color: #eee;
 }
 
 body.dark .servicii,
 body.dark .abonamente {
   background: #1a1a1a;
+  color: #eee;
 }
 
 body.dark .card,
 body.dark .plan {
   background: #222;
+<<<<<<< HEAD
 }
 
 body.dark .card h3,
@@ -408,4 +426,26 @@ body.dark .hero-text h1 span {
 body.dark .contact,
 body.dark footer {
   background: #000;
+=======
+  color: #eee;
+}
+
+body.dark .card h3,
+body.dark .plan h3 {
+  color: #ff4d4d;
+}
+
+body.dark .servicii h2,
+body.dark .abonamente h2,
+body.dark .echipa h2,
+body.dark .contact h2 {
+  color: #ff4d4d;
+}
+
+body.dark p,
+body.dark li,
+body.dark input,
+body.dark textarea {
+  color: #eee;
+>>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
