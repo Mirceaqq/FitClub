@@ -6,18 +6,13 @@
   scroll-behavior: smooth;
 }
 
-body {
-  background: #fff;
-  color: #111;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 30px;
   background: rgba(17, 17, 17, 0.9);
-  color: #111;
+  color: white;
   position: fixed;
   width: 100%;
   top: 0;
@@ -40,7 +35,7 @@ body {
 }
 
 .navbar ul li a {
-  color: #111;
+  color: white;
   text-decoration: none;
   transition: 0.3s;
   font-weight: 500;
@@ -109,7 +104,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #111;
+  color: white;
   padding: 0 20px;
 }
 
@@ -128,7 +123,7 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  color: #111;
+  color: #eee;
 }
 
 .btn {
@@ -155,7 +150,7 @@ body {
 .servicii h2 {
   font-size: 36px;
   margin-bottom: 50px;
-  color: #111;
+  color: #222;
   position: relative;
 }
 
@@ -177,17 +172,13 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: white;
   padding: 30px 25px;
   border-radius: 14px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 300px;
   transition: 0.3s;
-<<<<<<< HEAD
-  color: #111;
-=======
   color: #333;
->>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
 
 .card:hover {
@@ -251,7 +242,7 @@ body {
 .trainer h3 {
   font-size: 21px;
   margin-bottom: 8px;
-  color: #111;
+  color: #222;
 }
 
 .abonamente {
@@ -290,17 +281,13 @@ body {
 }
 
 .plan {
-  background: #fff;
+  background: white;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 280px;
   transition: 0.3s;
-<<<<<<< HEAD
-  color: #111;
-=======
   color: #333;
->>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
 
 .plan:hover {
@@ -376,32 +363,14 @@ footer {
   letter-spacing: 0.5px;
 }
 
-<<<<<<< HEAD
-/* DARK MODE */
-=======
->>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 body.dark {
   background: #111;
   color: #eee;
 }
 
 body.dark .navbar,
-<<<<<<< HEAD
-body.dark .hero-text p,
-body.dark .trainer h3,
-body.dark .card,
-body.dark .plan,
-body.dark .servicii h2,
-body.dark .abonamente h2,
-body.dark .echipa h2,
-body.dark .contact h2,
-body.dark li,
-body.dark input,
-body.dark textarea {
-=======
 body.dark .contact,
 body.dark footer {
->>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
   color: #eee;
 }
 
@@ -414,19 +383,6 @@ body.dark .abonamente {
 body.dark .card,
 body.dark .plan {
   background: #222;
-<<<<<<< HEAD
-}
-
-body.dark .card h3,
-body.dark .plan h3,
-body.dark .hero-text h1 span {
-  color: #ff4d4d;
-}
-
-body.dark .contact,
-body.dark footer {
-  background: #000;
-=======
   color: #eee;
 }
 
@@ -447,5 +403,4 @@ body.dark li,
 body.dark input,
 body.dark textarea {
   color: #eee;
->>>>>>> 62a368a83be511d32f278f59b67f638ffdb1ae5c
 }
