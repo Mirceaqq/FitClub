@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
   <header class="navbar">
     <div class="logo"><i class="fa-solid fa-dumbbell"></i> FitClub</div>
+
     <nav>
       <ul>
         <li><a href="#acasa">Acasă</a></li>
@@ -18,8 +20,18 @@
         <li><a href="#echipa">Echipă</a></li>
         <li><a href="#abonamente">Abonamente</a></li>
         <li><a href="#contact">Contact</a></li>
+            <div class="theme-toggle">
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+      </label>
+    </div>
       </ul>
     </nav>
+
+
   </header>
 
   <section class="hero" id="acasa">
@@ -125,14 +137,13 @@ contacta cât mai curând!</p>
       <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Trimite</button>
     </form>
     <div style="margin-top: 40px;">
-      <p><i class="fa-solid fa-location-dot"></i> Str. Sportivilor 25, Chișinău</p>
+      <p><i class="fa-solid fa-location-dot"></i> Str. FitClub 2, Chișinău</p>
       <p><i class="fa-solid fa-phone"></i> +373 68 123 456</p>
       <p><i class="fa-solid fa-envelope"></i> contact@fitclub.md</p>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 <strong>FitClub</strong>. Toate drepturile rezervate. | Realizat cu ❤️ pentru pasionații de fitness</p>
-  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
