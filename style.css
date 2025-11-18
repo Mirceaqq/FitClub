@@ -6,13 +6,18 @@
   scroll-behavior: smooth;
 }
 
+body {
+  background: #fff;
+  color: #111;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 30px;
   background: rgba(17, 17, 17, 0.9);
-  color: white;
+  color: #111;
   position: fixed;
   width: 100%;
   top: 0;
@@ -35,7 +40,7 @@
 }
 
 .navbar ul li a {
-  color: white;
+  color: #111;
   text-decoration: none;
   transition: 0.3s;
   font-weight: 500;
@@ -104,7 +109,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: #111;
   padding: 0 20px;
 }
 
@@ -123,7 +128,7 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  color: #eee;
+  color: #111;
 }
 
 .btn {
@@ -150,7 +155,7 @@
 .servicii h2 {
   font-size: 36px;
   margin-bottom: 50px;
-  color: #222;
+  color: #111;
   position: relative;
 }
 
@@ -172,12 +177,13 @@
 }
 
 .card {
-  background: white;
+  background: #fff;
   padding: 30px 25px;
   border-radius: 14px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 300px;
   transition: 0.3s;
+  color: #111;
 }
 
 .card:hover {
@@ -241,7 +247,7 @@
 .trainer h3 {
   font-size: 21px;
   margin-bottom: 8px;
-  color: #222;
+  color: #111;
 }
 
 .abonamente {
@@ -280,12 +286,13 @@
 }
 
 .plan {
-  background: white;
+  background: #fff;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 280px;
   transition: 0.3s;
+  color: #111;
 }
 
 .plan:hover {
@@ -312,7 +319,6 @@
 
 .plan ul li {
   margin: 8px 0;
-  color: #333;
 }
 
 .contact {
@@ -362,15 +368,25 @@ footer {
   letter-spacing: 0.5px;
 }
 
-
-
+/* DARK MODE */
 body.dark {
   background: #111;
   color: #eee;
 }
 
-body.dark .navbar {
-  background: rgba(0, 0, 0, 0.9);
+body.dark .navbar,
+body.dark .hero-text p,
+body.dark .trainer h3,
+body.dark .card,
+body.dark .plan,
+body.dark .servicii h2,
+body.dark .abonamente h2,
+body.dark .echipa h2,
+body.dark .contact h2,
+body.dark li,
+body.dark input,
+body.dark textarea {
+  color: #eee;
 }
 
 body.dark .servicii,
@@ -381,13 +397,15 @@ body.dark .abonamente {
 body.dark .card,
 body.dark .plan {
   background: #222;
-  color: #ddd;
 }
 
-body.dark .contact {
-  background: #000;
+body.dark .card h3,
+body.dark .plan h3,
+body.dark .hero-text h1 span {
+  color: #ff4d4d;
 }
 
+body.dark .contact,
 body.dark footer {
   background: #000;
 }
