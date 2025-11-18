@@ -178,6 +178,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 300px;
   transition: 0.3s;
+  color: #333;
 }
 
 .card:hover {
@@ -286,6 +287,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 280px;
   transition: 0.3s;
+  color: #333;
 }
 
 .plan:hover {
@@ -312,7 +314,6 @@
 
 .plan ul li {
   margin: 8px 0;
-  color: #333;
 }
 
 .contact {
@@ -362,32 +363,44 @@ footer {
   letter-spacing: 0.5px;
 }
 
-
-
 body.dark {
   background: #111;
   color: #eee;
 }
 
-body.dark .navbar {
-  background: rgba(0, 0, 0, 0.9);
+body.dark .navbar,
+body.dark .contact,
+body.dark footer {
+  color: #eee;
 }
 
 body.dark .servicii,
 body.dark .abonamente {
   background: #1a1a1a;
+  color: #eee;
 }
 
 body.dark .card,
 body.dark .plan {
   background: #222;
-  color: #ddd;
+  color: #eee;
 }
 
-body.dark .contact {
-  background: #000;
+body.dark .card h3,
+body.dark .plan h3 {
+  color: #ff4d4d;
 }
 
-body.dark footer {
-  background: #000;
+body.dark .servicii h2,
+body.dark .abonamente h2,
+body.dark .echipa h2,
+body.dark .contact h2 {
+  color: #ff4d4d;
+}
+
+body.dark p,
+body.dark li,
+body.dark input,
+body.dark textarea {
+  color: #eee;
 }
