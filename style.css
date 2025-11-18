@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 70px;
+  padding: 18px 30px;
   background: rgba(17, 17, 17, 0.9);
   color: white;
   position: fixed;
@@ -48,7 +48,6 @@
 }
 
 .theme-toggle {
-  position: absolute;
   right: 20px;
 }
 
