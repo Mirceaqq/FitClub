@@ -1,11 +1,11 @@
-
+// Toggle tema întunecată simplă
 const chk = document.getElementById('chk');
 
 chk.addEventListener('change', () => {
   document.body.classList.toggle('dark');
 });
 
-
+// Buton scroll to top
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
 
 window.addEventListener('scroll', () => {
@@ -23,6 +23,7 @@ scrollToTopBtn.addEventListener('click', () => {
   });
 });
 
+// Navigare smooth pentru link-uri
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -40,7 +41,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-
+// Formular de contact simplu
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
@@ -51,7 +52,7 @@ if (contactForm) {
   });
 }
 
-
+// Efect hover pentru carduri
 document.querySelectorAll('.card, .trainer, .filiala, .plan').forEach(item => {
   item.addEventListener('mouseenter', () => {
     item.style.transform = 'translateY(-5px)';
@@ -62,6 +63,7 @@ document.querySelectorAll('.card, .trainer, .filiala, .plan').forEach(item => {
   });
 });
 
+// Navbar la scroll
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
