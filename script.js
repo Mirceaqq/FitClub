@@ -3,6 +3,9 @@ const chk = document.getElementById('chk');
 
 chk.addEventListener('change', () => {
   document.body.classList.toggle('dark');
+
+  // ADĂUGAT: mesaj în consolă
+  console.log('apasat');
 });
 
 // Buton scroll to top
