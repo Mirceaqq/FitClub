@@ -1,15 +1,12 @@
 // Toggle tema întunecată simplă
 const chk = document.getElementById('chk');
-window.temaApasata = false; // Variabilă globală
+window.temaApasata = false;
 
 if (chk) {
   chk.addEventListener('change', () => {
     document.body.classList.toggle('dark');
     window.temaApasata = chk.checked;
-    
-    // Afișează în consolă valoarea variabilei
     console.log('temaApasata =', window.temaApasata);
-    console.log('Tema întunecată activată:', window.temaApasata ? 'DA' : 'NU');
   });
 }
 
