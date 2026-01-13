@@ -1,11 +1,10 @@
 // Toggle tema întunecată simplă
 const chk = document.getElementById('chk');
+let temaApasata = false; // VARIABILĂ ADĂUGATĂ
 
-chk.addEventListener('change', () => {
+chk.addEventListener('click', () => {
   document.body.classList.toggle('dark');
-
-  // ADĂUGAT: mesaj în consolă
-  console.log('apasat');
+  temaApasata = !temaApasata; // SE MODIFICĂ LA FIECARE APĂSARE
 });
 
 // Buton scroll to top
