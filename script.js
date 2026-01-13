@@ -6,6 +6,10 @@ if (chk) {
   chk.addEventListener('change', () => {
     document.body.classList.toggle('dark');
     window.temaApasata = chk.checked;
+    
+    // Afișează în consolă valoarea variabilei
+    console.log('temaApasata =', window.temaApasata);
+    console.log('Tema întunecată activată:', window.temaApasata ? 'DA' : 'NU');
   });
 }
 
