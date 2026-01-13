@@ -1,11 +1,13 @@
 // Toggle tema întunecată simplă
 const chk = document.getElementById('chk');
-window.temaApasata = false; // VARIABILĂ GLOBALĂ ADĂUGATĂ
+window.temaApasata = false; // Variabilă globală
 
-chk.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  window.temaApasata = !window.temaApasata;
-});
+if (chk) {
+  chk.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+    window.temaApasata = chk.checked;
+  });
+}
 
 // Buton scroll to top
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
