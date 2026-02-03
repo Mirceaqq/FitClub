@@ -1,81 +1,63 @@
-// Toggle tema întunecată simplă
-const chk = document.getElementById('chk');
-window.temaApasata = false;
+console.log("Hello from console");
 
-if (chk) {
-  chk.addEventListener('change', () => {
-    document.body.classList.toggle('dark');
-    window.temaApasata = chk.checked;
-    console.log('temaApasata =', window.temaApasata);
-  });
-}
+const content = {
+  title: "Bine ai venit la FitClub",
+  info: "Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!",
+  buttonText: "Înscrie-te acum"
+};
 
-// Buton scroll to top
-const scrollToTopBtn = document.querySelector('.scroll-to-top');
+const body = document.getElementsByTagName("body")[0];
+const header = document.getElementsByTagName("header")[0];
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollToTopBtn.classList.add('active');
-  } else {
-    scrollToTopBtn.classList.remove('active');
-  }
-});
+const heroSection = document.createElement("section");
+heroSection.className = "hero";
+heroSection.setAttribute("id", "acasa");
 
-scrollToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+const heroText = document.createElement("div");
+heroText.className = "hero-text";
 
-// Navigare smooth pentru link-uri
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
+const heading1 = document.createElement("h1");
+heading1.innerHTML = `Bine ai venit la <span>FitClub</span>`;
 
-// Formular de contact simplu
-const contactForm = document.getElementById('contact-form');
+const paragraph = document.createElement("p");
+paragraph.innerText = content.info;
+
+const button = document.createElement("a");
+button.setAttribute("href", "#abonamente");
+button.className = "btn";
+button.innerText = content.buttonText;
+
+heroText.appendChild(heading1);
+heroText.appendChild(paragraph);
+heroText.appendChild(button);
+
+heroSection.appendChild(heroText);
+header.after(heroSection);
+
+const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert('Mesajul tău a fost trimis! Te vom contacta în curând.');
+    alert("Mesajul tău a fost trimis!");
     contactForm.reset();
   });
 }
 
-// Efect hover pentru carduri
-document.querySelectorAll('.card, .trainer, .filiala, .plan').forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    item.style.transform = 'translateY(-5px)';
-  });
-  
-  item.addEventListener('mouseleave', () => {
-    item.style.transform = 'translateY(0)';
-  });
-});
+const lightBg = "rgb(238, 238, 204)";
+const bodyEl = document.getElementsByTagName("body")[0];
+const themeCheckbox = document.getElementById("chk");
 
-// Navbar la scroll
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(17, 17, 17, 0.95)';
-    navbar.style.padding = '12px 30px';
-  } else {
-    navbar.style.background = 'rgba(17, 17, 17, 0.9)';
-    navbar.style.padding = '18px 30px';
-  }
-});
+if (themeCheckbox) {
+  themeCheckbox.addEventListener("change", function () {
+    const currentBg = window.getComputedStyle(bodyEl).backgroundColor;
+
+    if (currentBg.includes("238")) {
+      bodyEl.style.background = "#120";
+      bodyEl.style.color = "#fff";
+    } else {
+      bodyEl.style.background = lightBg;
+      bodyEl.style.color = "#000";
+    }
+  });
+}
