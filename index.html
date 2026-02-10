@@ -11,9 +11,12 @@
 <body>
 
   <header class="navbar">
-    <div class="logo"><i class="fa-solid fa-dumbbell"></i> FitClub</div>
+    <div class="logo"><i class="fa-solid fa-dumbbell"></i> <span id="brandNameNav">FitClub</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mainNav">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <nav>
-      <ul>
+      <ul id="mainNav">
         <li><a href="#acasa">Acasă</a></li>
         <li><a href="#servicii">Servicii</a></li>
         <li><a href="#echipa">Echipă</a></li>
@@ -21,23 +24,25 @@
         <li><a href="#abonamente">Abonamente</a></li>
         <li><a href="#contact">Contact</a></li>
 
-        <div class="theme-toggle">
-          <input type="checkbox" class="checkbox" id="chk" />
-          <label class="label" for="chk">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <div class="ball"></div>
-          </label>
-        </div>
+        <li class="nav-theme">
+          <div class="theme-toggle">
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
 
   <section class="hero" id="acasa">
     <div class="hero-text">
-      <h1>Bine ai venit la <span>FitClub</span></h1>
-      <p>Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!</p>
-      <a href="#abonamente" class="btn">Înscrie-te acum</a>
+      <h1>Bine ai venit la <span id="brandNameHero">FitClub</span></h1>
+      <p id="heroText">Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!</p>
+      <a id="heroCta" href="#abonamente" class="btn">Înscrie-te acum</a>
     </div>
   </section>
 
@@ -115,7 +120,7 @@
     <div class="filiale-box">
       <div class="filiala">
         <div class="filiala-img">
-          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=60" alt="FitClub Centru">
+          <img id="filiala1Img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=60" alt="FitClub Centru">
           <div class="filiala-overlay">
             <a href="#" class="btn-outline">Vezi galerie</a>
           </div>
@@ -194,7 +199,7 @@
 
   <section class="contact" id="contact">
     <h2>Contactează-ne</h2>
-    <p>Ai întrebări sau vrei să te înscrii? Trimite-ne un mesaj și te vom contacta cât mai curând!</p>
+    <p id="contactIntro">Ai întrebări sau vrei să te înscrii? Trimite-ne un mesaj și te vom contacta cât mai curând!</p>
     <form id="contact-form">
       <input type="text" placeholder="Nume complet" required>
       <input type="email" placeholder="Email" required>
@@ -206,19 +211,20 @@
       </select>
       <textarea placeholder="Mesajul tău" required></textarea>
       <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Trimite</button>
+      <p id="formStatus" class="form-status" aria-live="polite"></p>
     </form>
     <div class="contact-info">
-      <p><i class="fa-solid fa-location-dot"></i> Str. FitClub 2, Chișinău</p>
-      <p><i class="fa-solid fa-phone"></i> +373 68 123 456</p>
-      <p><i class="fa-solid fa-envelope"></i> contact@fitclub.md</p>
+      <p><i class="fa-solid fa-location-dot"></i> <span id="contactAddress">Str. FitClub 2, Chișinău</span></p>
+      <p><i class="fa-solid fa-phone"></i> <span id="contactPhone">+373 68 123 456</span></p>
+      <p><i class="fa-solid fa-envelope"></i> <span id="contactEmail">contact@fitclub.md</span></p>
     </div>
   </section>
 
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h3>FitClub</h3>
-        <p>Transformăm visele în realitate prin sport și determinare.</p>
+        <h3 id="footerBrand">FitClub</h3>
+        <p id="footerDesc">Transformăm visele în realitate prin sport și determinare.</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
@@ -244,7 +250,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 FitClub. Toate drepturile rezervate.</p>
+      <p id="footerCopyright">&copy; 2025 FitClub. Toate drepturile rezervate.</p>
     </div>
   </footer>
 
