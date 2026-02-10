@@ -1,0 +1,27 @@
+{
+  "title": "FitClub - Sala ta de fitness",
+  "brandName": "FitClub",
+  "hero": {
+    "text": "Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!",
+    "cta": {
+      "text": "Înscrie-te acum",
+      "href": "#abonamente"
+    }
+  },
+  "contact": {
+    "intro": "Ai întrebări sau vrei să te înscrii? Trimite-ne un mesaj și te vom contacta cât mai curând!",
+    "address": "Str. FitClub 2, Chișinău",
+    "phone": "+373 68 123 456",
+    "email": "contact@fitclub.md"
+  },
+  "footer": {
+    "desc": "Transformăm visele în realitate prin sport și determinare.",
+    "copyright": "© 2025 FitClub. Toate drepturile rezervate."
+  },
+  "filiale": {
+    "filiala1": {
+      "imgSrc": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=60",
+      "imgAlt": "FitClub Centru"
+    }
+  }
+}
