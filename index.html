@@ -18,12 +18,13 @@
     <nav>
       <ul id="mainNav">
         <li><a href="#acasa">Acasă</a></li>
+        <li><a href="#statistici">Statistici</a></li>
         <li><a href="#servicii">Servicii</a></li>
         <li><a href="#echipa">Echipă</a></li>
+        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#filiale">Filiale</a></li>
         <li><a href="#abonamente">Abonamente</a></li>
         <li><a href="#contact">Contact</a></li>
-
         <li class="nav-theme">
           <div class="theme-toggle">
             <input type="checkbox" class="checkbox" id="chk" />
@@ -43,6 +44,32 @@
       <h1>Bine ai venit la <span id="brandNameHero">FitClub</span></h1>
       <p id="heroText">Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!</p>
       <a id="heroCta" href="#abonamente" class="btn">Înscrie-te acum</a>
+    </div>
+  </section>
+
+  <section class="statistici" id="statistici">
+    <h2>Statisticile noastre</h2>
+    <div class="statistici-box">
+      <div class="stat-item">
+        <i class="fa-solid fa-users fa-3x"></i>
+        <span class="stat-numar" data-target="1500">0</span>
+        <p>Membri activi</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-person-walking fa-3x"></i>
+        <span class="stat-numar" data-target="15">0</span>
+        <p>Antrenori</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-calendar-check fa-3x"></i>
+        <span class="stat-numar" data-target="10">0</span>
+        <p>Ani de experiență</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-trophy fa-3x"></i>
+        <span class="stat-numar" data-target="25">0</span>
+        <p>Premii câștigate</p>
+      </div>
     </div>
   </section>
 
@@ -111,6 +138,22 @@
         </div>
         <h3>Alex</h3>
         <p>Antrenor personal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECȚIUNE NOUĂ: GALERIE (doar poze din sală) -->
+  <section class="galerie" id="galerie">
+    <h2>Galerie foto</h2>
+    <div class="galerie-box">
+      <div class="galerie-item">
+        <img id="galerie-img-1" alt="Interior sală de fitness 1" loading="lazy">
+      </div>
+      <div class="galerie-item">
+        <img id="galerie-img-2" alt="Interior sală de fitness 2" loading="lazy">
+      </div>
+      <div class="galerie-item">
+        <img id="galerie-img-3" alt="Interior sală de fitness 3" loading="lazy">
       </div>
     </div>
   </section>
@@ -210,7 +253,7 @@
         <option value="premium">Premium - 800 MDL</option>
       </select>
       <textarea placeholder="Mesajul tău" required></textarea>
-      <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Trimite</button>
+      <button type="submit" class="btn" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> Trimite</button>
       <p id="formStatus" class="form-status" aria-live="polite"></p>
     </form>
     <div class="contact-info">
@@ -236,8 +279,10 @@
         <h3>Link-uri rapide</h3>
         <ul>
           <li><a href="#acasa">Acasă</a></li>
+          <li><a href="#statistici">Statistici</a></li>
           <li><a href="#servicii">Servicii</a></li>
           <li><a href="#echipa">Echipă</a></li>
+          <li><a href="#galerie">Galerie</a></li>
           <li><a href="#filiale">Filiale</a></li>
           <li><a href="#abonamente">Abonamente</a></li>
         </ul>
