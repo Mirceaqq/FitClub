@@ -1,175 +1,235 @@
-// Toggle tema întunecată simplă
+// Toggle tema întunecată simplă + persistentă
 const chk = document.getElementById('chk');
-window.temaApasata = false;
+let temaApasata = false; // Variabilă locală în loc de window.temaApasata
 
-// Încarcă conținut din content.json (pentru texte/imagini ușor de schimbat)
-async function loadContentFromJson() {
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (!el || typeof value !== 'string') return;
-    el.textContent = value;
-  };
-
-  const setAttr = (id, attr, value) => {
-    const el = document.getElementById(id);
-    if (!el || typeof value !== 'string') return;
-    el.setAttribute(attr, value);
-  };
-
-  try {
-    const res = await fetch('content.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`Nu pot încărca content.json (status ${res.status})`);
-
-    const data = await res.json();
-
-    // Titlu tab (optional)
-    if (typeof data.title === 'string') {
-      document.title = data.title;
-    }
-
-    // Brand
-    setText('brandNameNav', data.brandName);
-    setText('brandNameHero', data.brandName);
-    setText('footerBrand', data.brandName);
-
-    // Hero
-    if (data.hero) {
-      setText('heroText', data.hero.text);
-      if (data.hero.cta) {
-        setText('heroCta', data.hero.cta.text);
-        setAttr('heroCta', 'href', data.hero.cta.href);
-      }
-    }
-
-    // Contact
-    if (data.contact) {
-      setText('contactIntro', data.contact.intro);
-      setText('contactAddress', data.contact.address);
-      setText('contactPhone', data.contact.phone);
-      setText('contactEmail', data.contact.email);
-    }
-
-    // Footer
-    if (data.footer) {
-      setText('footerDesc', data.footer.desc);
-      setText('footerCopyright', data.footer.copyright);
-    }
-
-    // Filiale (exemplu: doar prima imagine)
-    if (data.filiale && data.filiale.filiala1) {
-      setAttr('filiala1Img', 'src', data.filiale.filiala1.imgSrc);
-      setAttr('filiala1Img', 'alt', data.filiale.filiala1.imgAlt);
-    }
-  } catch (err) {
-    console.warn('Nu s-a încărcat content.json. Se folosesc valorile din HTML.', err);
-  }
+// Recuperează preferința din localStorage
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  chk.checked = true;
+  temaApasata = true;
+  console.log('Tema activă:', temaApasata);
 }
 
-if (chk) {
-  // Setează tema salvată (dacă există)
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
+chk.addEventListener('change', () => {
+  temaApasata = chk.checked;
+  console.log('Tema activă:', temaApasata);
+
+  if (chk.checked) {
     document.body.classList.add('dark');
-    chk.checked = true;
-    window.temaApasata = true;
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }
-
-  chk.addEventListener('change', () => {
-    document.body.classList.toggle('dark');
-    window.temaApasata = chk.checked;
-    localStorage.setItem('theme', chk.checked ? 'dark' : 'light');
-  });
-}
-
-// Meniu mobil (hamburger)
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-function setMenuOpen(isOpen) {
-  if (!mainNav || !menuToggle) return;
-  mainNav.classList.toggle('open', isOpen);
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-}
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.contains('open');
-    setMenuOpen(!isOpen);
-  });
-}
+});
 
 // Buton scroll to top
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
+let scrollApasat = false;
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollToTopBtn.classList.add('active');
-  } else {
-    scrollToTopBtn.classList.remove('active');
+  if (scrollToTopBtn) {
+    if (window.scrollY > 300) scrollToTopBtn.classList.add('active');
+    else scrollToTopBtn.classList.remove('active');
   }
+  updateActiveNavLink();
 });
 
-scrollToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+if (scrollToTopBtn) {
+  scrollToTopBtn.addEventListener('click', () => {
+    scrollApasat = true;
+    console.log('Scroll to top:', scrollApasat);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(() => {
+      scrollApasat = false;
+      console.log('Scroll to top:', scrollApasat);
+    }, 500);
   });
-});
+}
 
-// Navigare smooth pentru link-uri
+// Funcție pentru a evidenția link-ul activ în navbar
+function setActiveLink(targetId) {
+  document.querySelectorAll('.navbar ul li a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === targetId) link.classList.add('active');
+  });
+}
+
+// Funcție pentru a actualiza link-ul activ pe baza poziției de scroll
+function updateActiveNavLink() {
+  const sections = document.querySelectorAll('section[id]');
+  const scrollY = window.scrollY + 100;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = '#' + section.getAttribute('id');
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      setActiveLink(sectionId);
+    }
+  });
+}
+
+// Navigare smooth pentru link-uri + efect fade subtil
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
-    
     const targetId = this.getAttribute('href');
     if (targetId === '#') return;
-    
+
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
+      if (mainNav && mainNav.classList.contains('open')) {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
 
-    // Închide meniul pe mobil după click
-    setMenuOpen(false);
+      setActiveLink(targetId);
+
+      // Efect fade out foarte subtil pe fundal
+      document.body.style.transition = 'opacity 0.2s ease';
+      document.body.style.opacity = '0.7';
+
+      setTimeout(() => {
+        window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+        document.body.style.opacity = '1';
+        setTimeout(() => {
+          document.body.style.transition = '';
+        }, 300);
+      }, 100);
+    }
   });
 });
 
-// Formular de contact simplu
+// Formular de contact
 const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (submitBtn.disabled) return;
 
-    if (formStatus) {
-      formStatus.textContent = 'Mesajul tău a fost trimis! Te vom contacta în curând.';
-      formStatus.classList.add('show');
-      // ascunde mesajul după puțin timp
-      window.setTimeout(() => {
-        formStatus.classList.remove('show');
-        formStatus.textContent = '';
-      }, 3500);
-    }
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner"></span> Se trimite...';
+    submitBtn.disabled = true;
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    formStatus.textContent = '✓ Mesajul tău a fost trimis! Te vom contacta în curând.';
+    formStatus.classList.add('show');
 
     contactForm.reset();
+
+    setTimeout(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      setTimeout(() => formStatus.classList.remove('show'), 4000);
+    }, 2000);
   });
 }
+
+// Galerie imagini – poze din sală
+function loadGalleryImages() {
+  const imgIds = ['galerie-img-1', 'galerie-img-2', 'galerie-img-3'];
+  const randomNum = Math.floor(Math.random() * 1000);
+
+  imgIds.forEach((id, k) => {
+    const imgElement = document.getElementById(id);
+    if (imgElement) {
+      imgElement.src = `https://loremflickr.com/800/1200/gym,interior?lock=${randomNum + k}`;
+      imgElement.onerror = function() {
+        this.src = 'https://via.placeholder.com/800x1200?text=Gym+Interior';
+        this.alt = 'Imagine indisponibilă temporar';
+      };
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', loadGalleryImages);
+
+// Scroll reveal
+const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.card, .trainer, .filiala, .plan, .stat-item, .galerie-item').forEach(el => {
+  observer.observe(el);
+});
+
+// Animatie statistici
+const statisticiSection = document.getElementById('statistici');
+const numere = document.querySelectorAll('.stat-numar');
+
+function animateNumbers() {
+  numere.forEach(numar => {
+    const target = parseInt(numar.getAttribute('data-target'), 10);
+    const current = parseInt(numar.innerText, 10);
+    if (current < target) {
+      const increment = Math.ceil(target / 50);
+      let newVal = current + increment;
+      if (newVal > target) newVal = target;
+      numar.innerText = newVal;
+    }
+  });
+}
+
+let animationStarted = false;
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !animationStarted) {
+      animationStarted = true;
+      const interval = setInterval(() => {
+        animateNumbers();
+        if ([...numere].every(n => parseInt(n.innerText, 10) >= parseInt(n.getAttribute('data-target'), 10))) {
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+  });
+}, { threshold: 0.5 });
+
+if (statisticiSection) statsObserver.observe(statisticiSection);
 
 // Navbar la scroll
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  if (navbar) {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
   }
 });
 
-// Pornește după ce DOM-ul e gata
-document.addEventListener('DOMContentLoaded', () => {
-  loadContentFromJson();
-});
+// Meniu mobil
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+let meniuDeschis = false;
+
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    meniuDeschis = !meniuDeschis;
+    console.log('Meniu deschis:', meniuDeschis);
+
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true' ? false : true;
+    mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', expanded);
+  });
+
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      meniuDeschis = false;
+      console.log('Meniu deschis:', meniuDeschis);
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
