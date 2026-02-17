@@ -12,6 +12,9 @@
   --bg-color: #f9f9f9;
   --text-color: #222;
   --card-bg: #fff;
+  --gradient: linear-gradient(135deg, #ff4d4d, #ff6b6b);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 body.dark {
@@ -20,12 +23,20 @@ body.dark {
   --bg-color: #1a1a1a;
   --text-color: #eee;
   --card-bg: #222;
+  --gradient: linear-gradient(135deg, #ff6b6b, #ff8e8e);
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  opacity: 0;
+  animation: pageFadeIn 0.8s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .navbar {
@@ -93,6 +104,12 @@ body {
 }
 
 .navbar ul li a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 3px;
+}
+
+.navbar ul li a.active {
   color: var(--primary-color);
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 3px;
@@ -181,22 +198,23 @@ body {
 }
 
 .btn {
-  background: var(--primary-color);
+  background: var(--gradient);
   color: white;
   padding: 14px 30px;
   text-decoration: none;
   border-radius: 40px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   font-weight: 500;
   display: inline-block;
   border: none;
   cursor: pointer;
   animation: fadeIn 1.5s ease;
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
 }
 
 .btn:hover {
-  background: #e63939;
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 77, 77, 0.4);
 }
 
 .btn-outline {
@@ -214,12 +232,7 @@ body {
 .btn-outline:hover {
   background: white;
   color: var(--primary-color);
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-10px); }
-  60% { transform: translateX(-50%) translateY(-5px); }
+  transform: scale(1.05);
 }
 
 @keyframes fadeInDown {
@@ -271,6 +284,64 @@ section h2::after {
   border-radius: 2px;
 }
 
+/* SECȚIUNE STATISTICI */
+.statistici {
+  background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.statistici h2 {
+  color: white;
+}
+
+.statistici h2::after {
+  background: white;
+}
+
+.statistici-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  flex: 1 1 200px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-item i {
+  margin-bottom: 15px;
+  color: white;
+}
+
+.stat-numar {
+  display: block;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.stat-item p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* SERVICII */
 .servicii {
   background: var(--bg-color);
   text-align: center;
@@ -287,15 +358,23 @@ section h2::after {
   background: var(--card-bg);
   padding: 30px 25px;
   border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 300px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.card.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-hover);
 }
 
 .card i {
@@ -309,6 +388,7 @@ section h2::after {
   font-size: 22px;
 }
 
+/* ECHIPA */
 .echipa {
   background: var(--card-bg);
   text-align: center;
@@ -324,7 +404,15 @@ section h2::after {
 .trainer {
   width: 260px;
   text-align: center;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.trainer.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .trainer:hover {
@@ -402,6 +490,57 @@ section h2::after {
   color: var(--secondary-color);
 }
 
+/* SECȚIUNE NOUĂ: GALERIE (doar poze din sală) */
+.galerie {
+  background: var(--bg-color);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.galerie-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.galerie-item {
+  flex: 1 1 300px;
+  max-width: 350px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.galerie-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galerie-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.galerie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galerie-item:hover img {
+  transform: scale(1.1);
+}
+
+/* FILIALE */
 .filiale {
   background: var(--bg-color);
   text-align: center;
@@ -418,14 +557,22 @@ section h2::after {
   background: var(--card-bg);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 350px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.filiala.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .filiala:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-hover);
 }
 
 .filiala-img {
@@ -481,6 +628,7 @@ section h2::after {
   text-align: center;
 }
 
+/* ABONAMENTE */
 .abonamente {
   background: var(--bg-color);
   text-align: center;
@@ -503,15 +651,23 @@ section h2::after {
   background: var(--card-bg);
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 280px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.plan.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .plan:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-hover);
 }
 
 .plan.popular {
@@ -570,6 +726,7 @@ section h2::after {
   left: 0;
 }
 
+/* CONTACT */
 .contact {
   background: #111;
   color: white;
@@ -614,6 +771,11 @@ input, textarea, select {
   font-size: 16px;
   background: #222;
   color: white;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 textarea {
@@ -624,6 +786,28 @@ textarea {
 button.btn {
   cursor: pointer;
   margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+button.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.btn .spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .contact-info {
@@ -634,6 +818,7 @@ button.btn {
   margin: 10px 0;
 }
 
+/* FOOTER */
 footer {
   background: #000;
   color: #aaa;
@@ -715,6 +900,7 @@ footer {
   border-top: 1px solid #333;
 }
 
+/* SCROLL TO TOP */
 .scroll-to-top {
   position: fixed;
   bottom: 30px;
@@ -745,14 +931,11 @@ footer {
   transform: translateY(-5px);
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: row;
     padding: 14px 16px;
-  }
-  
-  .navbar ul {
-    gap: 12px;
   }
 
   .menu-toggle {
@@ -761,7 +944,6 @@ footer {
     justify-content: center;
   }
 
-  /* meniu tip dropdown pe mobil */
   .navbar nav {
     position: absolute;
     top: 72px;
