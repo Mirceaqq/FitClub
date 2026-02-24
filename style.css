@@ -197,6 +197,62 @@ body {
   animation: fadeInUp 1s ease;
 }
 
+/* Generator motivațional în Hero */
+.motivational-generator {
+  margin-top: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding: 14px 18px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.motivational-generator label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #f5f5f5;
+  opacity: 0.9;
+}
+
+.motivational-generator input[type="text"] {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+  text-align: left;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.15s ease;
+}
+
+.motivational-generator input[type="text"]::placeholder {
+  color: rgba(230, 230, 230, 0.8);
+}
+
+.motivational-generator input[type="text"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.7);
+  background: rgba(0, 0, 0, 0.75);
+  transform: translateY(-1px);
+}
+
+#motivationalText {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--primary-color);
+  min-height: 22px; /* păstrează locul chiar și când nu e text */
+}
+
 .btn {
   background: var(--gradient);
   color: white;
@@ -1008,3 +1064,7 @@ footer {
     height: 40px;
   }
 }
+
+
+
+

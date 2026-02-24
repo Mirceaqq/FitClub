@@ -1,19 +1,17 @@
-// Toggle tema întunecată simplă + persistentă
+// --------------------- Tema întunecată persistentă ---------------------
 const chk = document.getElementById('chk');
-let temaApasata = false; // Variabilă locală în loc de window.temaApasata
+let temaApasata = false;
 
-// Recuperează preferința din localStorage
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
   chk.checked = true;
   temaApasata = true;
-  console.log('Tema activă:', temaApasata);
+  console.log('Tema întunecată activă la încărcare:', temaApasata);
 }
 
 chk.addEventListener('change', () => {
   temaApasata = chk.checked;
-  console.log('Tema activă:', temaApasata);
-
+  console.log('Tema întunecată activă după schimbare:', temaApasata);
   if (chk.checked) {
     document.body.classList.add('dark');
     localStorage.setItem('theme', 'dark');
@@ -23,33 +21,40 @@ chk.addEventListener('change', () => {
   }
 });
 
-// Buton scroll to top
+// --------------------- Scroll to top ---------------------
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
 let scrollApasat = false;
 
+// Combina scroll listener pentru performanță
 window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  // Scroll to top button
   if (scrollToTopBtn) {
-    if (window.scrollY > 300) scrollToTopBtn.classList.add('active');
+    if (scrollY > 300) scrollToTopBtn.classList.add('active');
     else scrollToTopBtn.classList.remove('active');
   }
+
+  // Navbar la scroll
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    if (scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  }
+
+  // Active nav link
   updateActiveNavLink();
 });
 
 if (scrollToTopBtn) {
   scrollToTopBtn.addEventListener('click', () => {
     scrollApasat = true;
-    console.log('Scroll to top:', scrollApasat);
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    setTimeout(() => {
-      scrollApasat = false;
-      console.log('Scroll to top:', scrollApasat);
-    }, 500);
+    setTimeout(() => { scrollApasat = false; }, 500);
   });
 }
 
-// Funcție pentru a evidenția link-ul activ în navbar
+// --------------------- Navbar active link ---------------------
 function setActiveLink(targetId) {
   document.querySelectorAll('.navbar ul li a').forEach(link => {
     link.classList.remove('active');
@@ -57,7 +62,6 @@ function setActiveLink(targetId) {
   });
 }
 
-// Funcție pentru a actualiza link-ul activ pe baza poziției de scroll
 function updateActiveNavLink() {
   const sections = document.querySelectorAll('section[id]');
   const scrollY = window.scrollY + 100;
@@ -72,7 +76,10 @@ function updateActiveNavLink() {
   });
 }
 
-// Navigare smooth pentru link-uri + efect fade subtil
+// --------------------- Smooth scroll cu fade subtil ---------------------
+const mainNav = document.getElementById('mainNav');
+const menuToggle = document.getElementById('menuToggle');
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -87,23 +94,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       }
 
       setActiveLink(targetId);
-
-      // Efect fade out foarte subtil pe fundal
       document.body.style.transition = 'opacity 0.2s ease';
       document.body.style.opacity = '0.7';
 
       setTimeout(() => {
         window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
         document.body.style.opacity = '1';
-        setTimeout(() => {
-          document.body.style.transition = '';
-        }, 300);
+        setTimeout(() => { document.body.style.transition = ''; }, 300);
       }, 100);
     }
   });
 });
 
-// Formular de contact
+// --------------------- Formular de contact ---------------------
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
@@ -132,7 +135,7 @@ if (contactForm) {
   });
 }
 
-// Galerie imagini – poze din sală
+// --------------------- Galerie imagini ---------------------
 function loadGalleryImages() {
   const imgIds = ['galerie-img-1', 'galerie-img-2', 'galerie-img-3'];
   const randomNum = Math.floor(Math.random() * 1000);
@@ -148,10 +151,9 @@ function loadGalleryImages() {
     }
   });
 }
-
 document.addEventListener('DOMContentLoaded', loadGalleryImages);
 
-// Scroll reveal
+// --------------------- Scroll reveal ---------------------
 const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -166,7 +168,7 @@ document.querySelectorAll('.card, .trainer, .filiala, .plan, .stat-item, .galeri
   observer.observe(el);
 });
 
-// Animatie statistici
+// --------------------- Animatie statistici ---------------------
 const statisticiSection = document.getElementById('statistici');
 const numere = document.querySelectorAll('.stat-numar');
 
@@ -200,25 +202,12 @@ const statsObserver = new IntersectionObserver((entries) => {
 
 if (statisticiSection) statsObserver.observe(statisticiSection);
 
-// Navbar la scroll
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    if (window.scrollY > 50) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
-  }
-});
-
-// Meniu mobil
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
+// --------------------- Meniu mobil ---------------------
 let meniuDeschis = false;
 
 if (menuToggle && mainNav) {
   menuToggle.addEventListener('click', () => {
     meniuDeschis = !meniuDeschis;
-    console.log('Meniu deschis:', meniuDeschis);
-
     const expanded = menuToggle.getAttribute('aria-expanded') === 'true' ? false : true;
     mainNav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', expanded);
@@ -228,8 +217,27 @@ if (menuToggle && mainNav) {
     link.addEventListener('click', () => {
       mainNav.classList.remove('open');
       meniuDeschis = false;
-      console.log('Meniu deschis:', meniuDeschis);
       menuToggle.setAttribute('aria-expanded', 'false');
     });
+  });
+}
+
+// --------------------- GENERATOR MOTIVAȚIONAL LIVE ---------------------
+const nameInput = document.getElementById('userName');  // sau 'motivationName', depinde ce id ai în HTML
+const motivationalText = document.getElementById('motivationalText');
+
+if (nameInput) {
+  nameInput.addEventListener('input', () => {
+    const name = nameInput.value.trim();
+    const lastChar = name.slice(-1);
+    console.log('Text introdus în generator:', name);
+    if (lastChar) {
+      console.log('Ultima literă scrisă:', lastChar);
+    }
+    if (name.length > 0) {
+      motivationalText.textContent = `${name}, începe transformarea ta la FitClub!`;
+    } else {
+      motivationalText.textContent = '';
+    }
   });
 }
