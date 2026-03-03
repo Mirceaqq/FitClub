@@ -25,24 +25,20 @@ chk.addEventListener('change', () => {
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
 let scrollApasat = false;
 
-// Combina scroll listener pentru performanță
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
 
-  // Scroll to top button
   if (scrollToTopBtn) {
     if (scrollY > 300) scrollToTopBtn.classList.add('active');
     else scrollToTopBtn.classList.remove('active');
   }
 
-  // Navbar la scroll
   const navbar = document.querySelector('.navbar');
   if (navbar) {
     if (scrollY > 50) navbar.classList.add('scrolled');
     else navbar.classList.remove('scrolled');
   }
 
-  // Active nav link
   updateActiveNavLink();
 });
 
@@ -106,34 +102,60 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// --------------------- Formular de contact ---------------------
+// --------------------- Formular de contact (salvare în localStorage) ---------------------
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
+const numeInput = document.querySelector('#contact-form input[type="text"]');
+const emailInput = document.querySelector('#contact-form input[type="email"]');
+const abonamentSelect = document.querySelector('#contact-form select');
+const mesajTextarea = document.querySelector('#contact-form textarea');
 
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (submitBtn.disabled) return;
+// Funcție care salvează toate câmpurile în localStorage
+function salveazaFormular() {
+  let numeVal = '';
+  let emailVal = '';
+  let abonamentVal = '';
+  let mesajVal = '';
 
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<span class="spinner"></span> Se trimite...';
-    submitBtn.disabled = true;
+  if (numeInput) numeVal = numeInput.value;
+  if (emailInput) emailVal = emailInput.value;
+  if (abonamentSelect) abonamentVal = abonamentSelect.value;
+  if (mesajTextarea) mesajVal = mesajTextarea.value;
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  const dateFormular = {
+    nume: numeVal,
+    email: emailVal,
+    abonament: abonamentVal,
+    mesaj: mesajVal
+  };
 
-    formStatus.textContent = '✓ Mesajul tău a fost trimis! Te vom contacta în curând.';
-    formStatus.classList.add('show');
-
-    contactForm.reset();
-
-    setTimeout(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      setTimeout(() => formStatus.classList.remove('show'), 4000);
-    }, 2000);
-  });
+  localStorage.setItem('dateFormularContact', JSON.stringify(dateFormular));
 }
+
+// Salvăm la fiecare modificare
+if (numeInput) numeInput.addEventListener('input', salveazaFormular);
+if (emailInput) emailInput.addEventListener('input', salveazaFormular);
+if (abonamentSelect) abonamentSelect.addEventListener('change', salveazaFormular);
+if (mesajTextarea) mesajTextarea.addEventListener('input', salveazaFormular);
+
+// La încărcare, completăm câmpurile
+function incarcaFormular() {
+  const dateSalvate = localStorage.getItem('dateFormularContact');
+  if (dateSalvate) {
+    try {
+      const date = JSON.parse(dateSalvate);
+      if (numeInput) numeInput.value = date.nume || '';
+      if (emailInput) emailInput.value = date.email || '';
+      if (abonamentSelect) abonamentSelect.value = date.abonament || '';
+      if (mesajTextarea) mesajTextarea.value = date.mesaj || '';
+    } catch (e) {
+      console.error('Eroare la încărcarea datelor', e);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', incarcaFormular);
 
 // --------------------- Galerie imagini ---------------------
 function loadGalleryImages() {
@@ -223,7 +245,7 @@ if (menuToggle && mainNav) {
 }
 
 // --------------------- GENERATOR MOTIVAȚIONAL LIVE ---------------------
-const nameInput = document.getElementById('userName');  // sau 'motivationName', depinde ce id ai în HTML
+const nameInput = document.getElementById('userName');
 const motivationalText = document.getElementById('motivationalText');
 
 if (nameInput) {
@@ -231,9 +253,10 @@ if (nameInput) {
     const name = nameInput.value.trim();
     const lastChar = name.slice(-1);
     console.log('Text introdus în generator:', name);
-    if (lastChar) {
-      console.log('Ultima literă scrisă:', lastChar);
-    }
+
+    // Salvăm în localStorage ca să apară în F12
+    localStorage.setItem('lastGeneratorName', name);
+
     if (name.length > 0) {
       motivationalText.textContent = `${name}, începe transformarea ta la FitClub!`;
     } else {
