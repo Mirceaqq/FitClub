@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Permissions-Policy" content="unload=()">
   <title>FitClub - Sala ta de fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041883.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -19,6 +23,7 @@
       <ul id="mainNav">
         <li><a href="#acasa">Acasă</a></li>
         <li><a href="#statistici">Statistici</a></li>
+        <li><a href="#citate">Citate</a></li>
         <li><a href="#servicii">Servicii</a></li>
         <li><a href="#echipa">Echipă</a></li>
         <li><a href="#galerie">Galerie</a></li>
@@ -44,8 +49,6 @@
       <h1>Bine ai venit la <span id="brandNameHero">FitClub</span></h1>
       <p id="heroText">Descoperă un loc unde energia, disciplina și motivația se transformă în rezultate reale. Fă primul pas spre o versiune mai puternică a ta!</p>
       <a id="heroCta" href="#abonamente" class="btn">Înscrie-te acum</a>
-
-      <!-- Generator motivațional live -->
       <div class="motivational-generator">
         <label for="userName">Introdu numele tău:</label>
         <input type="text" id="userName" placeholder="Ex: Alex" />
@@ -76,6 +79,31 @@
         <i class="fa-solid fa-trophy fa-3x"></i>
         <span class="stat-numar" data-target="25">0</span>
         <p>Premii câștigate</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="citate" id="citate">
+    <h2>Citat motivațional</h2>
+    <div class="citat-container" id="citatContainer">
+      <div class="citat-loading" id="citatLoading">
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+        <p>Se încarcă citatul...</p>
+      </div>
+      <div class="citat-content" id="citatContent" style="display:none;">
+        <i class="fa-solid fa-quote-left citat-icon"></i>
+        <p class="citat-text" id="citatText"></p>
+        <span class="citat-autor" id="citatAutor"></span>
+        <button class="btn citat-btn" id="citatBtn">
+          <i class="fa-solid fa-rotate-right"></i> Citat nou
+        </button>
+      </div>
+      <div class="citat-error" id="citatError" style="display:none;">
+        <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+        <p>Nu s-a putut încărca citatul. Verifică conexiunea.</p>
+        <button class="btn citat-btn" id="citatRetryBtn">
+          <i class="fa-solid fa-rotate-right"></i> Încearcă din nou
+        </button>
       </div>
     </div>
   </section>
