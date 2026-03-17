@@ -264,3 +264,42 @@ if (nameInput) {
     }
   });
 }
+
+// --------------------- CITATE MOTIVAȚIONALE (DummyJSON API) ---------------------
+async function fetchCitat() {
+  const loading = document.getElementById('citatLoading');
+  const content = document.getElementById('citatContent');
+  const error = document.getElementById('citatError');
+  const textEl = document.getElementById('citatText');
+  const autorEl = document.getElementById('citatAutor');
+
+  loading.style.display = 'flex';
+  content.style.display = 'none';
+  error.style.display = 'none';
+
+  try {
+    const response = await fetch('https://dummyjson.com/quotes/random');
+    if (!response.ok) throw new Error('Eroare rețea');
+    const data = await response.json();
+
+    textEl.textContent = data.quote;
+    autorEl.textContent = '— ' + data.author;
+
+    loading.style.display = 'none';
+    content.style.display = 'block';
+  } catch (err) {
+    console.error('Eroare la fetch citat:', err);
+    loading.style.display = 'none';
+    error.style.display = 'flex';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchCitat();
+
+  const citatBtn = document.getElementById('citatBtn');
+  const citatRetryBtn = document.getElementById('citatRetryBtn');
+
+  if (citatBtn) citatBtn.addEventListener('click', fetchCitat);
+  if (citatRetryBtn) citatRetryBtn.addEventListener('click', fetchCitat);
+});
